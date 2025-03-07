@@ -114,11 +114,14 @@ const AttendanceScanner = () => {
             {/* Modal Body */}
             <div className="mt-4">
               <QrScanner
-                delay={300}
-                onError={handleError}
-                onScan={handleScan}
-                style={{ width: "100%" }}
-              />
+                  delay={300}
+                  onError={handleError}
+                  onScan={handleScan}
+                  style={{ width: "100%" }}
+                  constraints={{
+                    video: { facingMode: { exact: "environment" } } 
+                  }}
+                />
 
               {scanResult && (
                 <div className="mt-4">
