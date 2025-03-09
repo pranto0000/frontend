@@ -75,47 +75,60 @@ const Navbar = () => {
 
     {/* Navbar */}
     <nav
-      className={`p-4 text-white fixed w-full z-20 transition-all duration-300 ${
-        isScrolled ? "bg-blue-800 shadow-lg top-0" : "bg-rose-500"
-      }`}
-    >
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold">School Name</h1>
-        <ul className="hidden md:flex space-x-6">
+  className={`p-4 text-white fixed w-full z-20 transition-all duration-300 ${
+    isScrolled ? "bg-blue-800 shadow-lg top-0" : "bg-blue-900"
+  }`}
+>
+  <div className="max-w-6xl mx-auto flex justify-between items-center px-4">
+    <h1 className="text-xl font-bold">School Name</h1>
+
+    {/* Desktop Menu */}
+    <ul className="hidden md:flex space-x-6">
+      {["Home", "About", "Result", "Notice", "Contact"].map((item, index) => (
+        <li key={index}>
+          <a
+            href={`/${item.toLowerCase()}`}
+            className="text-white hover:text-rose-500 font-medium transition-all"
+          >
+            {item}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    {/* Mobile Menu Button */}
+    <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-2xl">
+      {isMenuOpen ? <FaTimes /> : <FaBars />}
+    </button>
+  </div>
+
+  {/* Mobile Menu */}
+  {isMenuOpen && (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-30 flex justify-end">
+      <div className="w-64 bg-blue-900 text-white h-full shadow-lg p-6">
+        <button
+          onClick={() => setIsMenuOpen(false)}
+          className="text-white text-2xl absolute top-4 right-4"
+        >
+          <FaTimes />
+        </button>
+        <ul className="mt-10 space-y-4">
           {["Home", "About", "Result", "Notice", "Contact"].map((item, index) => (
             <li key={index}>
               <a
                 href={`/${item.toLowerCase()}`}
-                className="text-white hover:text-rose-500 font-medium transition-all"
+                className="text-white block py-2 px-4 hover:bg-rose-500 rounded transition"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item}
               </a>
             </li>
           ))}
         </ul>
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-2xl">
-          {isMenuOpen ? <FaTimes /> : <FaBars />}
-        </button>
       </div>
-    </nav>
-
-    {/* Mobile Menu */}
-    <div
-      className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 transform transition-transform duration-300 ${
-        isMenuOpen ? "translate-x-0" : "-translate-x-full"
-      }`}
-    >
-      {["Home", "About", "Result", "Notice", "Contact"].map((item, index) => (
-        <a
-          key={index}
-          href={`/${item.toLowerCase()}`}
-          className="text-white text-lg font-semibold hover:text-yellow-300 transition"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          {item}
-        </a>
-      ))}
     </div>
+  )}
+</nav>
   </>
   );
 };
