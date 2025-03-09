@@ -50,64 +50,73 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Topbar */}
-      <div className={`bg-gray-900 text-white py-2 px-4 transition-all duration-300 ${isScrolled ? "-translate-y-full opacity-0" : "opacity-100"}`}>
-        <div className="container mx-auto flex justify-between items-center text-sm">
-          {/* Left Side: Contact Info */}
-          <div>
-            📞 +123-456-7890 | <MdMarkEmailRead className=" inline-block text-green-500"/> info@school.com
-          </div>
-          {/* Right Side: User Links */}
-          <div className="flex items-center space-x-4">
-            <FaUser className="text-green-500" />
-            <button onClick={handleDashboardClick} className="hover:underline">Dashboard </button>
-            {/* <a href="/login" className="hover:underline bg-orange-500 px-2 py-0.5 rounded-md"><FiLogIn className=" inline-block mr-2 text-black" />Login</a> */}
-            <button onClick={() => navigate("/login")} className="btn relative inline-flex items-center justify-start overflow-hidden font-medium transition-all bg-orange-500 rounded hover:bg-orange-500 group py-1 px-1.5">
-<span className="w-56 h-48 rounded bg-white absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-<span className="relative w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-black"><FiLogIn className=" inline-block mr-2 text-black group-hover:text-rose-500" /> Login</span>
-</button>
-          </div>
+    {/* Topbar */}
+    <div
+      className={`bg-gray-900 text-white py-2 px-4 transition-all duration-300 ${
+        isScrolled ? "-translate-y-full opacity-0" : "opacity-100"
+      }`}
+    >
+      <div className="container mx-auto flex justify-between items-center text-sm">
+        <div>
+          📞 +123-456-7890 | <MdMarkEmailRead className="inline-block text-green-500" /> info@school.com
         </div>
-      </div>
-
-      {/* Navbar */}
-      <nav className={`p-4 text-white  fixed w-full z-20 transition-all duration-300 ${isScrolled ? "bg-blue-800 shadow-lg top-0" : "bg-blue-900 top-2rem"}`}>
-        <div className="container mx-auto flex justify-between items-center">
-          {/* Logo */}
-          <h1 className="text-xl font-bold">School Name</h1>
-
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex space-x-6">
-            <li><a href="/" className="text-white hover:text-rose-500 hover:font-bold transition-all duration-300 ease-in-out relative after:block after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 after:ease-in-out hover:after:w-full">Home</a></li>
-            <li><a href="/AboutPages" className="text-white hover:text-rose-500 hover:font-bold transition-all duration-300 ease-in-out relative after:block after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 after:ease-in-out hover:after:w-full">About</a></li>
-            <li><a href="/result" className="text-white hover:text-rose-500 hover:font-bold transition-all duration-300 ease-in-out relative after:block after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 after:ease-in-out hover:after:w-full">Result</a></li>
-            <li><a href="/NoticeBoard" className="text-white hover:text-rose-500 hover:font-bold transition-all duration-300 ease-in-out relative after:block after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 after:ease-in-out hover:after:w-full">Notice</a></li>
-            <li><a href="/contact" className="hover:text-gray-950 font-semibold transition bg-green-500 py-1 px-3 rounded-full">Contact</a></li>
-            
-          </ul>
-
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className="md:hidden text-2xl"
+        <div className="flex items-center space-x-4">
+          <FaUser className="text-green-500" />
+          <button onClick={handleDashboardClick} className="hover:underline">Dashboard</button>
+          <button
+            onClick={() => navigate("/login")}
+            className="bg-orange-500 text-white px-3 py-1 rounded hover:bg-orange-600 flex items-center"
           >
-            {isMenuOpen ? <FaTimes /> : <FaBars />}
+            <FiLogIn className="mr-2" /> Login
           </button>
         </div>
+      </div>
+    </div>
 
-        {/* Mobile Dropdown Menu */}
-        {isMenuOpen && (
-          <ul className="md:hidden bg-rose-400 text-white absolute top-full left-0 w-full flex flex-col items-center space-y-4 py-4 shadow-lg">
-            <li><a href="/" className="hover:text-yellow-300 transition" onClick={() => setIsMenuOpen(false)}>Home</a></li>
-            <li><a href="#about" className="hover:text-yellow-300 transition" onClick={() => setIsMenuOpen(false)}>About</a></li>
-            <li><a href="#events" className="hover:text-yellow-300 transition" onClick={() => setIsMenuOpen(false)}>Events</a></li>
-            <li><a href="#admission" className="hover:text-yellow-300 transition" onClick={() => setIsMenuOpen(false)}>Admission</a></li>
-            <li><a href="/result" className="hover:text-yellow-300 transition" onClick={() => setIsMenuOpen(false)}>Result</a></li>
-            <li><a href="/contact" className="hover:text-yellow-300 transition" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
-          </ul>
-        )}
-      </nav>
-    </>
+    {/* Navbar */}
+    <nav
+      className={`p-4 text-white fixed w-full z-20 transition-all duration-300 ${
+        isScrolled ? "bg-blue-800 shadow-lg top-0" : "bg-rose-500 top-2rem"
+      }`}
+    >
+      <div className="container mx-auto flex justify-between items-center">
+        <h1 className="text-xl font-bold">School Name</h1>
+        <ul className="hidden md:flex space-x-6">
+          {["Home", "About", "Result", "Notice", "Contact"].map((item, index) => (
+            <li key={index}>
+              <a
+                href={`/${item.toLowerCase()}`}
+                className="text-white hover:text-rose-500 font-medium transition-all"
+              >
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-2xl">
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
+    </nav>
+
+    {/* Mobile Menu */}
+    <div
+      className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 transform transition-transform duration-300 ${
+        isMenuOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
+      {["Home", "About", "Result", "Notice", "Contact"].map((item, index) => (
+        <a
+          key={index}
+          href={`/${item.toLowerCase()}`}
+          className="text-white text-lg font-semibold hover:text-yellow-300 transition"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          {item}
+        </a>
+      ))}
+    </div>
+  </>
   );
 };
 
