@@ -28,13 +28,13 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/NoticeBoard" element={<NoticeBoard />} />
+          <Route path="/notice" element={<NoticeBoard />} />
           <Route path="/achievements" element={<AllAchievements />} />
           <Route path="/result" element={<StudentResult />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/all-teachers" element={<AllTeachers />} />
-          <Route path="/AboutPages" element={<AboutPages />} />
+          <Route path="/about" element={<AboutPages />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
@@ -99,51 +99,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-// import React from "react";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-// // Importing components
-// import LoginPage from "./pages/LoginPage.jsx";
-// import AdminDashboard from "./pages/AdminDashboard.jsx";
-// import AccountantDashboard from "./pages/AccountantDashboard.jsx";
-// import TeacherDashboard from "./pages/TeacherDashboard.jsx";
-// import StudentDashboard from "./pages/StudentDashboard.jsx";
-// import LandingPage from "./pages/LangingPage.jsx";
-// import StudentLogin from "./pages/StudentLogin.jsx";
-// import ManageStudents from "./Dashboard/Admin/ManageStudents .jsx";
-// import DashboardHome from "./Dashboard/Admin/DashboardHome.jsx";
-// import ManageTeachers from "./Dashboard/Admin/ManageTeachers.jsx";
-// import StudentIDCard from "./Dashboard/Admin/StudentIDCard.jsx";
-// import AttendanceDownloadPDF from "./Dashboard/Admin/AttendanceDownloadPDF.jsx";
-
-// function App() {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route path="/" element={<LandingPage />} />
-//         <Route path="/login" element={<LoginPage />} />
-//         <Route path="/student-login" element={<StudentLogin />} />
-
-//         {/* Admin Dashboard with nested routes */}
-//         <Route path="/admin-dashboard/*" element={<AdminDashboard />}>
-//           <Route path="adminHome" element={<DashboardHome />} />
-//           <Route path="managestudents" element={<ManageStudents />} />
-//           <Route path="teachers" element={<ManageTeachers />} /> 
-//           <Route path="student-id" element={<StudentIDCard />} /> 
-//           <Route path="attendance-sheet" element={<AttendanceDownloadPDF />} /> 
-//         </Route>
-
-//         <Route path="/student-dashboard" element={<StudentDashboard />} />
-//         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
-//         <Route path="/accountant-dashboard" element={<AccountantDashboard />} />
-//       </Routes>
-//     </Router>
-//   );
-// }
-
-// export default App;
